@@ -1,0 +1,67 @@
+#include <iostream>
+
+using namespace std;
+
+
+int leerNumero() {
+    int numero;
+    do {
+        cout << "Ingrese un numero entero positivo: ";
+        cin >> numero;
+        if (numero <= 0) {
+            cout << "El numero debe ser mayor que cero. Intente de nuevo.\n";
+        }
+    } while (numero <= 0);
+    return numero;
+}
+
+
+void procesarDigitos(int n, int &mayor, int &menor, int &sumaPares) {
+    int temp = n;
+    
+   
+    mayor = -1;
+    menor = 10;
+    sumaPares = 0;
+
+    while (temp > 0) {
+        int digito = temp % 10; 
+  if (digito > mayor) {
+            mayor = digito;
+        }
+
+   
+        if (digito < menor) {
+            menor = digito;
+        }
+
+      
+        if (digito % 2 == 0) {
+            sumaPares += digito;
+        }
+
+        temp /= 10; 
+    }
+}
+
+
+void mostrarResultados(int mayor, int menor, int sumaPares) {
+    cout << "\n=== RESULTADOS DEL ANALISIS DE DIGITOS ===" << endl;
+    cout << "Digito mayor: " << mayor << endl;
+    cout << "Digito menor: " << menor << endl;
+    cout << "Suma de digitos pares: " << sumaPares << endl;
+}
+
+int main() {
+    int numero = leerNumero();
+    int mayor, menor, sumaPares;
+
+    procesarDigitos(numero, mayor, menor, sumaPares);
+    mostrarResultados(mayor, menor, sumaPares);
+
+    return 0;
+}
+
+
+
+
