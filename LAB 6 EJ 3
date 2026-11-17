@@ -1,0 +1,45 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    long long N; 
+    int cantidadTotalDigitos = 0;
+    int cantidadMayoresA5 = 0;
+    int sumaMayoresA5 = 0;
+
+  
+    do {
+        cout << "Ingrese un número entero positivo N: ";
+        cin >> N;
+        if (N <= 0) {
+            cout << "El número debe ser positivo. Intente nuevamente.\n";
+        }
+    } while (N <= 0);
+
+    long long aux = N; 
+
+    
+    while (aux > 0) {
+        int digito = aux % 10;     
+        cantidadTotalDigitos++;     
+
+       
+        if (digito > 5) {
+            cantidadMayoresA5++;
+            sumaMayoresA5 += digito;
+        }
+
+        aux /= 10;                  
+    }
+
+    cout << "\n========================================" << endl;
+    cout << "           RESULTADOS                   " << endl;
+    cout << "========================================" << endl;
+    cout << "Número analizado: " << N << endl;
+    cout << "Cantidad total de dígitos: " << cantidadTotalDigitos << endl;
+    cout << "Cantidad de dígitos mayores a 5: " << cantidadMayoresA5 << endl;
+    cout << "Suma de los dígitos mayores a 5: " << sumaMayoresA5 << endl;
+
+    return 0;
+}
