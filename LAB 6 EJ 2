@@ -1,0 +1,44 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    double combustible = 50.0; 
+    double consumo;
+    int entregas = 0;
+    double totalConsumido = 0.0;
+
+   
+    while (combustible > 10.0) {
+        cout << "Combustible actual: " << combustible << " litros." << endl;
+        cout << "Ingrese la cantidad de litros consumidos en la entrega: ";
+        cin >> consumo;
+
+       
+        if (consumo < 0) {
+            cout << "Error: El consumo no puede ser negativo. Intente nuevamente.\n" << endl;
+            continue;
+        }
+
+        combustible -= consumo;     
+        totalConsumido += consumo;  
+        entregas++;                 
+        
+        cout << endl;
+    }
+
+    cout << "========================================" << endl;
+    cout << "       REGISTRO DETENIDO                " << endl;
+    cout << "========================================" << endl;
+    cout << "Cantidad de entregas realizadas: " << entregas << endl;
+    cout << "Total de combustible consumido:  " << totalConsumido << " litros" << endl;
+    cout << "Combustible restante:            " << combustible << " litros" << endl;
+    cout << "Mensaje: Debe cargar combustible" << endl;
+
+    return 0;
+}
+
+
+
+
+
