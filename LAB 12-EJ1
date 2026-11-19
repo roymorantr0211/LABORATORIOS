@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int BuscarSubCadena(string a, string b) {
+    if (a.size() == 0 || a.length() > b.length()) {
+        return -1;
+    }
+
+    int pos = b.find(a);
+    if (pos >= 0 && pos < b.length()) {
+        if (b.substr(pos, a.length()) == a) {
+            return pos;
+        }
+    }
+
+    return -1;
+}
+
+int main() {
+    string a = "oool";
+    string b = "hooola";
+
+    cout << BuscarSubCadena(a, b) << endl;
+
+    return 0;
+}
