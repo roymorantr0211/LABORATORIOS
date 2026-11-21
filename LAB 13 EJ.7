@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Prototipos
+void registrar(string &nombre, string &apellido, int &anio);
+bool validar(string nombre, string apellido);
+string generarCodigo(string nombre, string apellido, int anio);
+void mostrar(string codigo);
+
+int main() {
+    string nombre, apellido, codigo;
+    int anio;
+
+    registrar(nombre, apellido, anio);
+
+    if (validar(nombre, apellido)) {
+
+        codigo = generarCodigo(nombre, apellido, anio);
+
+        mostrar(codigo);
+
+    } else {
+        cout << "El nombre y apellido deben tener "
+             << "al menos 3 caracteres." << endl;
+    }
+
+    return 0;
+}
+
+// Funciones
+void registrar(string &nombre, string &apellido, int &anio) {
+    cout << "Ingrese el nombre: ";
+    getline(cin, nombre);
+
+    cout << "Ingrese el apellido: ";
+    getline(cin, apellido);
+
+    cout << "Ingrese el anio de ingreso: ";
+    cin >> anio;
+}
+
+bool validar(string nombre, string apellido) {
+    return nombre.length() >= 3 && apellido.length() >= 3;
+}
+
+string generarCodigo(string nombre, string apellido, int anio) {
+    return nombre.substr(0, 3) +
+           apellido.substr(0, 3) +
+           to_string(anio);
+}
+
+void mostrar(string codigo) {
+    cout << "Codigo generado: " << codigo << endl;
+}
