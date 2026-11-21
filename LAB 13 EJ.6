@@ -1,0 +1,130 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Prototipos
+void mostrarMenu();
+int contarCaracteres(string mensaje);
+void buscarPalabra(string mensaje, string palabra);
+string extraerTexto(string mensaje, int inicio, int cantidad);
+void reemplazarPalabra(string &mensaje, string buscar, string nueva);
+
+int main() {
+    string mensaje, palabra, nueva, fragmento;
+    int opcion, inicio, cantidad;
+
+    cout << "Ingrese el mensaje inicial: ";
+    getline(cin, mensaje);
+
+    do {
+        mostrarMenu();
+
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
+        cin.ignore(10000, '\n');
+
+        switch (opcion) {
+
+            case 1:
+                cout << "Cantidad de caracteres: "
+                     << contarCaracteres(mensaje) << endl;
+                break;
+
+            case 2:
+                cout << "Ingrese la palabra que desea buscar: ";
+                getline(cin, palabra);
+
+                buscarPalabra(mensaje, palabra);
+                break;
+
+            case 3:
+                cout << "Posicion inicial: ";
+                cin >> inicio;
+
+                cout << "Cantidad de caracteres: ";
+                cin >> cantidad;
+                cin.ignore(10000, '\n');
+
+                if (inicio >= 0 &&
+                    inicio < mensaje.length() &&
+                    cantidad > 0) {
+
+                    fragmento = extraerTexto(mensaje, inicio, cantidad);
+
+                    cout << "Texto extraido: " << fragmento << endl;
+                } else {
+                    cout << "Posicion o cantidad no valida." << endl;
+                }
+                break;
+
+            case 4:
+                cout << "Palabra que desea reemplazar: ";
+                getline(cin, palabra);
+
+                cout << "Palabra nueva: ";
+                getline(cin, nueva);
+
+                reemplazarPalabra(mensaje, palabra, nueva);
+
+                cout << "Mensaje actualizado: " << mensaje << endl;
+                break;
+
+            case 5:
+                cout << "Mensaje actual: " << mensaje << endl;
+                break;
+
+            case 6:
+                cout << "Saliendo del programa..." << endl;
+                break;
+
+            default:
+                cout << "Opcion no valida." << endl;
+        }
+
+        cout << endl;
+
+    } while (opcion != 6);
+
+    return 0;
+}
+
+// Funciones
+void mostrarMenu() {
+    cout << "===== ANALIZADOR DE MENSAJES =====" << endl;
+    cout << "1. Contar caracteres" << endl;
+    cout << "2. Buscar palabra" << endl;
+    cout << "3. Extraer texto" << endl;
+    cout << "4. Reemplazar palabra" << endl;
+    cout << "5. Mostrar mensaje" << endl;
+    cout << "6. Salir" << endl;
+}
+
+int contarCaracteres(string mensaje) {
+    return mensaje.length();
+}
+
+void buscarPalabra(string mensaje, string palabra) {
+    size_t posicion = mensaje.find(palabra);
+
+    if (posicion != string::npos) {
+        cout << "La palabra se encontro en la posicion: "
+             << posicion << endl;
+    } else {
+        cout << "Palabra no encontrada." << endl;
+    }
+}
+
+string extraerTexto(string mensaje, int inicio, int cantidad) {
+    return mensaje.substr(inicio, cantidad);
+}
+
+void reemplazarPalabra(string &mensaje, string buscar, string nueva) {
+    size_t posicion = mensaje.find(buscar);
+
+    if (posicion != string::npos) {
+        mensaje.replace(posicion, buscar.length(), nueva);
+        cout << "Reemplazo realizado." << endl;
+    } else {
+        cout << "La palabra no fue encontrada." << endl;
+    }
+}
