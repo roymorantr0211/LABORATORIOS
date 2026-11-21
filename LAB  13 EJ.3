@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Prototipos
+void registrar(string &mensaje, string &palabra);
+void buscarPalabra(string mensaje, string palabra);
+
+int main() {
+    string mensaje, palabra;
+
+    registrar(mensaje, palabra);
+
+    buscarPalabra(mensaje, palabra);
+
+    return 0;
+}
+
+// Funciones
+void registrar(string &mensaje, string &palabra) {
+    cout << "Ingrese un mensaje: ";
+    getline(cin, mensaje);
+
+    cout << "Ingrese la palabra que desea buscar: ";
+    getline(cin, palabra);
+}
+
+void buscarPalabra(string mensaje, string palabra) {
+    size_t posicion = mensaje.find(palabra);
+
+    if (posicion != string::npos) {
+        cout << "La palabra se encontro en la posicion: "
+             << posicion << endl;
+    } else {
+        cout << "Palabra no encontrada." << endl;
+    }
+}
