@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Prototipos
+void registrar(string &mensaje);
+int contarCaracteres(string mensaje);
+void mostrar(string mensaje, int cantidad);
+
+int main() {
+    string mensaje;
+    int cantidad;
+
+    registrar(mensaje);
+
+    cantidad = contarCaracteres(mensaje);
+
+    mostrar(mensaje, cantidad);
+
+    return 0;
+}
+
+// Funciones
+void registrar(string &mensaje) {
+    cout << "Ingrese un mensaje: ";
+    getline(cin, mensaje);
+}
+
+int contarCaracteres(string mensaje) {
+    return mensaje.length();
+}
+
+void mostrar(string mensaje, int cantidad) {
+    cout << "\nMensaje: " << mensaje << endl;
+    cout << "Cantidad de caracteres: " << cantidad << endl;
+}
