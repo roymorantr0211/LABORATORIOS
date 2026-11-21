@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Prototipos
+void registrar(string &mensaje, string &buscar, string &nueva);
+void corregir(string &mensaje, string buscar, string nueva);
+void agregarSaludo(string &mensaje);
+void mostrar(string original, string modificado);
+
+int main() {
+    string mensaje, original, buscar, nueva;
+
+    registrar(mensaje, buscar, nueva);
+
+    original = mensaje;
+
+    corregir(mensaje, buscar, nueva);
+
+    agregarSaludo(mensaje);
+
+    mostrar(original, mensaje);
+
+    return 0;
+}
+
+// Funciones
+void registrar(string &mensaje, string &buscar, string &nueva) {
+    cout << "Ingrese el mensaje: ";
+    getline(cin, mensaje);
+
+    cout << "Ingrese la palabra incorrecta: ";
+    getline(cin, buscar);
+
+    cout << "Ingrese la palabra correcta: ";
+    getline(cin, nueva);
+}
+
+void corregir(string &mensaje, string buscar, string nueva) {
+    size_t posicion = mensaje.find(buscar);
+
+    if (posicion != string::npos) {
+        mensaje.replace(posicion, buscar.length(), nueva);
+    } else {
+        cout << "La palabra indicada no fue encontrada." << endl;
+    }
+}
+
+void agregarSaludo(string &mensaje) {
+    mensaje.insert(0, "Estimado cliente: ");
+}
+
+void mostrar(string original, string modificado) {
+    cout << "\nMensaje original: " << original << endl;
+
+    cout << "Mensaje modificado: " << modificado << endl;
+}
