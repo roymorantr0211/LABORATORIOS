@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Prototipos
+void registrar(string &mensaje);
+int contarVocales(string mensaje);
+void mostrar(int cantidad);
+
+int main() {
+    string mensaje;
+    int cantidad;
+
+    registrar(mensaje);
+
+    cantidad = contarVocales(mensaje);
+
+    mostrar(cantidad);
+
+    return 0;
+}
+
+// Funciones
+void registrar(string &mensaje) {
+    cout << "Ingrese un mensaje: ";
+    getline(cin, mensaje);
+}
+
+int contarVocales(string mensaje) {
+    string vocales = "aeiouAEIOU";
+    int contador = 0;
+
+    for (int i = 0; i < mensaje.length(); i++) {
+
+        if (vocales.find(mensaje[i]) != string::npos) {
+            contador++;
+        }
+    }
+
+    return contador;
+}
+
+void mostrar(int cantidad) {
+    cout << "Cantidad de vocales: " << cantidad << endl;
+}
