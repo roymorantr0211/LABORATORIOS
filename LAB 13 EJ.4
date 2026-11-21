@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Prototipos
+void registrar(string &mensaje, int &inicio, int &cantidad);
+string extraerTexto(string mensaje, int inicio, int cantidad);
+void mostrar(string fragmento);
+
+int main() {
+    string mensaje, fragmento;
+    int inicio, cantidad;
+
+    registrar(mensaje, inicio, cantidad);
+
+    if (inicio >= 0 &&
+        inicio < mensaje.length() &&
+        cantidad > 0) {
+
+        fragmento = extraerTexto(mensaje, inicio, cantidad);
+        mostrar(fragmento);
+
+    } else {
+        cout << "Posicion o cantidad no valida." << endl;
+    }
+
+    return 0;
+}
+
+// Funciones
+void registrar(string &mensaje, int &inicio, int &cantidad) {
+    cout << "Ingrese un mensaje: ";
+    getline(cin, mensaje);
+
+    cout << "Ingrese la posicion inicial: ";
+    cin >> inicio;
+
+    cout << "Ingrese la cantidad de caracteres: ";
+    cin >> cantidad;
+}
+
+string extraerTexto(string mensaje, int inicio, int cantidad) {
+    return mensaje.substr(inicio, cantidad);
+}
+
+void mostrar(string fragmento) {
+    cout << "Fragmento extraido: " << fragmento << endl;
+}
