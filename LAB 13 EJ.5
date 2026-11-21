@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Prototipos
+void registrar(string &mensaje, string &buscar, string &nueva);
+void reemplazarPalabra(string &mensaje, string buscar, string nueva);
+void mostrar(string mensaje);
+
+int main() {
+    string mensaje, buscar, nueva;
+
+    registrar(mensaje, buscar, nueva);
+
+    reemplazarPalabra(mensaje, buscar, nueva);
+
+    mostrar(mensaje);
+
+    return 0;
+}
+
+// Funciones
+void registrar(string &mensaje, string &buscar, string &nueva) {
+    cout << "Ingrese un mensaje: ";
+    getline(cin, mensaje);
+
+    cout << "Ingrese la palabra que desea sustituir: ";
+    getline(cin, buscar);
+
+    cout << "Ingrese la palabra nueva: ";
+    getline(cin, nueva);
+}
+
+void reemplazarPalabra(string &mensaje, string buscar, string nueva) {
+    size_t posicion = mensaje.find(buscar);
+
+    if (posicion != string::npos) {
+        mensaje.replace(posicion, buscar.length(), nueva);
+        cout << "Reemplazo realizado correctamente." << endl;
+    } else {
+        cout << "La palabra no fue encontrada." << endl;
+    }
+}
+
+void mostrar(string mensaje) {
+    cout << "Mensaje actualizado: " << mensaje << endl;
+}
